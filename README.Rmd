@@ -1,0 +1,8 @@
+---
+title: "README"
+author: "DM Rochman"
+date: "January 12, 2016"
+output: pdf_document
+---
+
+This is my assignment 1 Github working file
