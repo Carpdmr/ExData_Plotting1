@@ -1,4 +1,9 @@
 ##Plot 4
+finalData <- hhpc_data[hhpc_data$Date %in% c("1/2/2007","2/2/2007"),]
+settime <-strptime(paste(finalData$Date, finalData$Time, sep=" "),"%d/%m/%Y %H:%M:%S")
+finalData <- cbind(settime, finalData)
+quartz()
+par(mfrow=c(2,2), mar=c(4,4,2,1), oma=c(0,0,2,0))
 plot(finalData$settime, finalData$Global_active_power, type="l", col="green", xlab="", ylab="Global Active Power")
 plot(finalData$settime, finalData$Voltage, type="l", col="orange", xlab="datetime", ylab="Voltage")
 plot(finalData$settime, finalData$Sub_metering_1, type="l", xlab="", ylab="Energy sub metering")
@@ -6,3 +11,5 @@ lines(finalData$settime, finalData$Sub_metering_2, type="l", col="red")
 lines(finalData$settime, finalData$Sub_metering_3, type="l", col="blue")
 legend("topright", bty="n", legend=labels, lty=1, col=columnlines)
 plot(finalData$settime, finalData$Global_reactive_power, type="l", col="blue", xlab="datetime", ylab="Global_reactive_power")
+dev.copy(png, file="plot4.png")
+dev.off()
